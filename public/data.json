@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "name": "Black",
+        "price": 109.95
+    },
+    {
+        "id": 2,
+        "name": "Yellow ",
+        "price": 22.3
+        
+       
+    },
+    {
+        "id": 3,
+        "name": "Green",
+        "price": 55.99
+       
+    },
+    {
+        "id": 4,
+        "name": "Red",
+        "price": 15.99
+    }
+]
