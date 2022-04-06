@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import { useParams,useNavigate  } from 'react-router-dom';
 import ItemList from './ItemList';
 
 const ItemListContainer = ({ greetings }) => {
 
     const [products, setProducts] = useState([]);
-
-    const stock = 10;
+    const {id}= useParams();
+    
 
     useEffect(() => {
 
         (async () => {
             try {
-                const response = await fetch('/data.json');
-
-                const data = await response.json();
-
-                setProducts(data);
+                const listado=[];
+                for (let i = 1; i < 43; i++) {
+                    let response = await fetch(`https://rickandmortyapi.com/api/character/?page=${i}`);
+                    let data = await response.json();
+                    const personajes = data.results;
+                    personajes.forEach(element => listado.push(element)
+                        
+                    );
+                
+                 }
+                 const personajesFiltrados = listado.filter(personaje => personaje.species === id)
+                 setProducts(personajesFiltrados)
+                 
+                  
+               
             } catch (error) {
                 console.log(error);
             }
+                
         })()
 
-    }, [])
+    }, [id])
 
 
 
@@ -30,7 +42,7 @@ const ItemListContainer = ({ greetings }) => {
             <h1>{greetings}</h1>
             <ItemList
                 products={products}
-                stock={stock}
+                
             />
         </>
 

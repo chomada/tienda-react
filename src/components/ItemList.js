@@ -1,16 +1,17 @@
 import React from 'react'
-import ItemCount from './ItemCount'
+import ItemCount from './ItemCount';
 
-const ItemList = ({ products, stock }) => {
-
+const ItemList = ({ products }) => {
+  
 
   return (
     <>
       <div>
         {products.map(prod => {
           return <ItemCount
+          
             products={prod}
-            stock={stock} />
+             />
         })}
       </div>
     </>
