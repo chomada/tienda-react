@@ -8,6 +8,7 @@ const ItemDetailContainer = ({ greetings }) => {
 
     const {id}=useParams();
     const stock = 10;
+    
 
     useEffect(() => {
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
+import ItemCount from './ItemCount'
 
 
 const ItemDetail = ({ personaje,stock }) => {
@@ -7,19 +8,18 @@ const ItemDetail = ({ personaje,stock }) => {
 
 
     const [initial, setInitial] = useState(1);
-
+    
+    const [buy,setBuy]=useState(false);
     const add = () => {
+        setBuy(true)
         if (stock > 0) alert(`Se agrego ${initial} unidad/es del producto seleccionado al carrito`);
         else alert("no hay stock disponible")
     }
-    const plus = () => {
-        if (initial < stock) setInitial(initial + 1);
-
+    const terminate=()=>{
+        alert("Ir al carrito")
 
     }
-    const min = () => {
-        if (initial > 1) setInitial(initial - 1);
-    }
+
     return (
         <>
         <Card   style={{ width: '18rem' }}>
@@ -30,10 +30,15 @@ const ItemDetail = ({ personaje,stock }) => {
                     Some quick example text to build on the card title and make up the bulk of
                     the card's content.
                 </Card.Text>
-                <Button variant="primary" onClick={min}>-</Button>{initial}<Button variant="primary" onClick={plus}>+</Button>
+              {buy?  <Button variant="primary" onClick={terminate}>Go to cart</Button>:
+              <ItemCount 
+               initial={initial}
+               setInitial={setInitial}
+               stock={stock}/>
+              }
 
             </Card.Body>
-            <Card.Footer> <Button variant="primary" onClick={add}>Add to Cart</Button></Card.Footer>
+            {buy?null:<Card.Footer> <Button variant="primary" onClick={add}>Add to Cart</Button></Card.Footer>}
 
         </Card>
     </>

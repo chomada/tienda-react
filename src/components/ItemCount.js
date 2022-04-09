@@ -1,27 +1,27 @@
 import React from 'react'
-import { Card } from 'react-bootstrap';
-import { useNavigate  } from 'react-router-dom';
-const ItemCount = ({ products }) => {
-    const navigate=useNavigate();
+import { Button } from 'react-bootstrap';
+
+
+const ItemCount = ({ initial,setInitial,stock }) => {
+    
+
+
+    
+
    
+    const plus = () => {
+        if (initial < stock) setInitial(initial + 1);
+
+
+    }
+    const min = () => {
+        if (initial > 1) setInitial(initial - 1);
+    }
     return (
         <>
-            <Card onClick={() => navigate(`/item/${products.id}`)} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={products.image} />
-                <Card.Body>
-                    <Card.Title>{products.name}</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-
-
-                </Card.Body>
-                <Card.Footer></Card.Footer>
-
-            </Card>
-        </>
-
+         <Button variant="primary" onClick={min}>-</Button>{initial}<Button variant="primary" onClick={plus}>+</Button>
+    </>
+       
     )
 }
 
