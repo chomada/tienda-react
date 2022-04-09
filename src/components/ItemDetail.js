@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import ItemCount from './ItemCount'
-
+import { useNavigate  } from 'react-router-dom';
+ 
 
 const ItemDetail = ({ personaje,stock }) => {
-    
+    const navigate=useNavigate();
 
 
     const [initial, setInitial] = useState(1);
@@ -17,6 +18,8 @@ const ItemDetail = ({ personaje,stock }) => {
     }
     const terminate=()=>{
         alert("Ir al carrito")
+        navigate('/cart')
+
 
     }
 
